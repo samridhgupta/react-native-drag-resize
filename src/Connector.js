@@ -78,7 +78,7 @@ export class Connector extends Component {
   }
 
   render() {
-    const { x, y, size } = this.props;
+    const { x, y, size, connectorStyle = {} } = this.props;
 
     return (
       <View
@@ -92,6 +92,7 @@ export class Connector extends Component {
           borderRadius: size / 2,
           borderColor: "black",
           backgroundColor: "white",
+          ...connectorStyle,
         }}
         {...this._panResponder.panHandlers}
       />
@@ -103,6 +104,7 @@ Connector.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
   size: PropTypes.number,
+  connectorStyle: PropTypes.objectOf(PropTypes.string),
   onStart: PropTypes.func.isRequired,
   onMove: PropTypes.func.isRequired,
   onEnd: PropTypes.func.isRequired,
